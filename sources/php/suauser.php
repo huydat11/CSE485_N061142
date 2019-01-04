@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>NGHE NHẠC ONLINE</title>
+  <title>QUẢN LÝ THÀNH VIÊN</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/layout.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,11 +32,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
       <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></li>
-      <li><a href="quanly.php">Quản Lý Thành Viên</a></li>
-      <li><a href="#">Quản Lý Nhạc</a></li>
+      <li><a href="admin.php">Quản Lý Thành Viên</a></li>
+      <li><a href="quanlynhac.php">Quản Lý Nhạc</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="quanly.php"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION['username'];?></a></li>
+      <li><a href="admin.php"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION['username'];?></a></li>
       <li><a href="dangxuat.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
         
@@ -45,7 +45,7 @@
 </nav>
 <?php
     $id=$_GET['id'];//lấy id trên url trang suauser
-    //echo $id;
+    
      $sql="select * from user where id='$id'";
      $query=mysqli_query($con,$sql);
      $row=mysqli_fetch_array($query);
@@ -66,17 +66,17 @@
                     $sql="select * from user where username='$username'";
                     $query= mysqli_query($con,$sql);
                     $num =mysqli_num_rows($query);
-                     
-                    if(((strlen($username)<5 || strlen($password)<5)||($num==1))&&($row['username']!=$username)){
+                    if(((strlen($username)<5 || strlen($password)<5)||($num==1))&&($row['username']!=$username))//username vừa nhập phải khác username của user muốn sửa)
+                    {
                      echo '<p style="color:red">Vui lòng nhập username và password nhiều hơn 5 kí tự hoặc username đã tồn tại</p>';
                     }else{ 
-                           if(($_POST['quyen']==1)&&($username=$_POST['username'])){
+                           if(($_POST['quyen']==1)){//nếu quyền là 1 thì update
                            $password1 = md5($password);
                            $sql2="update user set password='$password1',username='$username',quyen='$quyen' where id='$id'  ";
                            $query2=mysqli_query($con,$sql2);
                            if($query2){
                                header('location:quanly.php');
-                           }}else{
+                           }}else{//nếu quyền khác 1 thì update là quyen=0
                             $password1 = md5($password);
                             $sql3="update user set password='$password1',username='$username',quyen='0' where id='$id'  ";
                             $query3=mysqli_query($con,$sql3);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>NGHE NHẠC ONLINE</title>
+  <title>ĐĂNG KÍ THÀNH VIÊN</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/layout.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -89,12 +89,12 @@
                      $query= mysqli_query($con,$sql);
                      $num =mysqli_num_rows($query);
                      $password1 = md5($password);
-                     if($num==0){
+                     if($num==0){//nếu num=0 =>chưa tồn tại username
                        $sql2="INSERT INTO user(username,password) VALUES ('$username','$password1')";
                        $them= mysqli_query($con,$sql2);
                        if($them){
                         echo '<p style="color:blue">Đăng kí thành công!</p>';
-                        header('location:dangnhap.php');
+                       
                        }else{
                         echo '<p style="color:red">Đăng kí không thành công!</p>';
                        
@@ -132,9 +132,32 @@
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <img src="../images/thanghekhoc.jpg" class="img-responsive" style="width:15% " alt="Image">
-  <p></p>
+<footer class="container-fluid  ">
+<div class="col-sm-4 text-left">
+  <img src="../images/logomega.png" style="width:150px;  height:170px;">
+  </div>
+  <div class="col-sm-8 text-left">
+  
+<table style="width:50%">
+  
+  <tr>
+    <td><a href="#">Giới Thiệu</td>
+    <td><a href="#">Điều Khoản </td>
+    <td><a href="#">Liên Hệ</td>
+  </tr>
+  <tr>
+  <td><a href="#">Quảng Cáo</td>
+  <td><a href="#">Ứng Dụng</td>
+  <td><a href="#">Góp Ý</td>
+  </tr>
+  <tr>
+  <td><a href="#">Copyright</td>
+  <td><a href="#">FAQs</td>
+ 
+  </tr>
+</table>
+</div>
+  </div>
 </footer>
 
 </body>

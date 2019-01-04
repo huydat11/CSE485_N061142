@@ -1,12 +1,8 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
-  if($_SESSION['quyen']==0){
-    header('location:trangchuuser.php');
-  }
-  if($_SESSION['quyen']==1){
-    header('location:trangchuadmin.php');
-  }}else{
+    header('location:index.php');
+  }else{
 
 ?>
 <!DOCTYPE html>
@@ -101,13 +97,7 @@ if(isset($_SESSION['username'])){
                 $row=mysqli_fetch_array($query);
                 $_SESSION['username']=$username;
                 $_SESSION['quyen']= $row[quyen];
-                if($_SESSION['quyen']==1){
-                  header('location:trangchuadmin.php');
-                }else{
-                  header('location:trangchuuser.php');
-                }
-                  
-                
+                header('location:index.php'); 
               }
           }
         }
@@ -127,14 +117,38 @@ if(isset($_SESSION['username'])){
       </form>
       </div>
       
-   
+      
     
   </div>
+  
 </div>
 
-<footer class="container-fluid text-center">
-  <img src="../images/thanghekhoc.jpg" class="img-responsive" style="width:15% " alt="Image">
-  <p></p>
+<footer class="container-fluid  ">
+<div class="col-sm-4 text-left">
+  <img src="../images/logomega.png" style="width:150px;  height:170px;">
+  </div>
+  <div class="col-sm-8 text-left">
+  
+<table style="width:50%">
+  
+  <tr>
+    <td><a href="#">Giới Thiệu</td>
+    <td><a href="#">Điều Khoản </td>
+    <td><a href="#">Liên Hệ</td>
+  </tr>
+  <tr>
+  <td><a href="#">Quảng Cáo</td>
+  <td><a href="#">Ứng Dụng</td>
+  <td><a href="#">Góp Ý</td>
+  </tr>
+  <tr>
+  <td><a href="#">Copyright</td>
+  <td><a href="#">FAQs</td>
+ 
+  </tr>
+</table>
+</div>
+  </div>
 </footer>
 
 </body>

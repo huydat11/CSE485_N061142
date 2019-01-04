@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>NGHE NHẠC ONLINE</title>
+  <title>NGHE NHẠC ONLINE-UPLOAD</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/layout.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -54,7 +54,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="quanly.php"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION['username'];?></a></li>
+        <li><a href="admin.php"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION['username'];?></a></li>
         <li><a href="upload.php"><span class="glyphicon glyphicon-upload"></span> Upload</a></li>
         <li><a href="dangxuat.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
@@ -74,22 +74,12 @@
 <div class="container text-center">    
   <div class="row content">
     <div class="col-sm-8 text-left">
+    <img src="../images/upload.png" class="img-responsive" style="width:70% " alt="Image">
     <div class="well ">
-    <form action="" method="POST">
-          <div class="form-group">
-            <label for="">Username:</label>
-            <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập...">
-          </div>
-          <div class="form-group">
-            <label for="">password:</label>
-            <input type="password" class="form-control" name="password" placeholder="Mật khẩu...">
-          </div>
-          <div class="form-group">
-            <label for="">Nhập Lại password:</label>
-            <input type="password" class="form-control" name="password2" placeholder="Mật khẩu...">
-          </div>
-          <button type="submit" class="btn btn-danger" name="submit">Đăng Kí</button> 
-        </form>
+   <form action="xulyupload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="fileUpload" value="">
+    <input type="submit" name="up" value="Upload">
+    </form>
       </div>
     </div>
    
@@ -109,15 +99,38 @@
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <img src="../images/thanghekhoc.jpg" class="img-responsive" style="width:15% " alt="Image">
-  <p></p>
+<footer class="container-fluid  ">
+<div class="col-sm-4 text-left">
+  <img src="../images/logomega.png" style="width:150px;  height:150px;">
+  </div>
+  <div class="col-sm-8 text-left">
+  
+<table style="width:50%">
+  
+  <tr>
+    <td><a href="#">Giới Thiệu</td>
+    <td><a href="#">Điều Khoản </td>
+    <td><a href="#">Liên Hệ</td>
+  </tr>
+  <tr>
+  <td><a href="#">Quảng Cáo</td>
+  <td><a href="#">Ứng Dụng</td>
+  <td><a href="#">Góp Ý</td>
+  </tr>
+  <tr>
+  <td><a href="#">Copyright</td>
+  <td><a href="#">FAQs</td>
+ 
+  </tr>
+</table>
+</div>
+  </div>
 </footer>
 
 </body>
 </html>
 <?php
     }else{
-      header('location:haha.php');
+      header('location:index.php');
     }
 ?>
